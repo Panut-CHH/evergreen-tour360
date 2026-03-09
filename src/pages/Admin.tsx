@@ -143,13 +143,15 @@ const Admin = () => {
     }
   };
 
+  const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
+
   const copyUrl = (slug: string) => {
-    const url = `${window.location.origin}/tour/${slug}`;
+    const url = `${siteUrl}/tour/${slug}`;
     navigator.clipboard.writeText(url);
     toast.success('คัดลอก URL แล้ว');
   };
 
-  const getTourUrl = (slug: string) => `${window.location.origin}/tour/${slug}`;
+  const getTourUrl = (slug: string) => `${siteUrl}/tour/${slug}`;
 
   const openQrModal = (tour: Tour) => {
     setSelectedTourForQr(tour);
