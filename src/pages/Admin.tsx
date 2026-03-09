@@ -57,7 +57,7 @@ const Admin = () => {
   const fetchTours = async () => {
     try {
       const records = await pb.collection('tours').getList<Tour>(1, 100, {
-        sort: '-created',
+        sort: '-id',
       });
       setTours(records.items);
     } catch (err) {

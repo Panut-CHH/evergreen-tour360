@@ -15,7 +15,7 @@ const Index = () => {
       try {
         const records = await pb.collection('tours').getList<Tour>(1, 6, {
           filter: 'is_active = true',
-          sort: '-created',
+          sort: '-id',
         });
         setTours(records.items);
       } catch (err) {
