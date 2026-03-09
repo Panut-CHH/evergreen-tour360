@@ -22,10 +22,10 @@ const TourView = () => {
         );
         setTour(record);
 
-        // Increment view count
-        await pb.collection('tours').update(record.id, {
+        // Increment view count (non-blocking, ignore errors for public access)
+        pb.collection('tours').update(record.id, {
           view_count: (record.view_count || 0) + 1,
-        });
+        }).catch(() => {});
       } catch {
         setError('ไม่พบ Virtual Tour นี้');
       } finally {
